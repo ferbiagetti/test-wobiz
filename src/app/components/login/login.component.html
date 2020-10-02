@@ -1,0 +1,91 @@
+<div class="row mr-0">
+  <!-- Left Container-->
+  <div class="col-12 col-md-6 col-lg-4 p-0 ml-0 col">
+
+
+  <div class="box vh-100 white-bg box-shadow">
+    <div class="row h-100">
+      <div class="col h-100">
+        <a href="https://www.wobiz.com/">
+          <img class="logo" src="assets/images/wobiz-logo.png">
+        </a>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h2 class="greenish-blue-text mt-5 mb-4 bolder">Ingresa a tu cuenta</h2>
+
+          <app-alerts *ngIf="showWrongData"
+          [errorText]="wrongDataMsj"></app-alerts>
+
+            <!-- Email Field -->
+            <fieldset class="form-group darkgray-text bold">
+              <legend class="bv-no-focus-ring col-form-label pt-0">Email</legend>
+
+              <div tabindex="1" role="group" class="bv-no-focus-ring">
+                <input if="email" placeholder="ej: usuario@mail.com" type="email"
+                class="text-lowercase form-control" formControlName="email">
+              </div>
+
+              <app-alerts *ngIf="email.invalid && isSubmitted"
+              [errorText]="email.errors.required ? 'Necesitamos tu email.' :
+                'El email ingresado no es correcto.'"></app-alerts>
+
+            </fieldset>
+
+            <!-- Password Field -->
+            <fieldset class="form-group darkgray-text bold">
+              <legend class="bv-no-focus-ring col-form-label pt-0">Contraseña</legend>
+
+              <div tabindex="-1" role="group" class="bv-no-focus-ring">
+                <input placeholder="Escribe tu contraseña" id="password"
+                  type="password" class="form-control" formControlName="password">
+              </div>
+
+              <app-alerts *ngIf="password.invalid && isSubmitted"
+                [errorText]="password.errors.required ? 'Necesitamos tu contraseña.' :
+                  'La contraseña no tiene un formato válido.'"></app-alerts>
+            </fieldset>
+
+            <div class="pl-0 mt-2 mb-2 link-decoration">
+              <a class="gray-text forgot-pass">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <button class="btn btn-action-2 btn-lg btn-block mt-3 btn-validate btn-secondary">
+                  <div *ngIf="!showSpinner">Ingresar a mi cuenta</div>
+                  <app-spinner *ngIf="showSpinner"></app-spinner>
+                </button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+
+  <!-- Right Container-->
+  <div class="col-lg-8 col-md-6 d-none d-md-block p-0 col">
+    <div  class="position relative vh-100">
+
+      <img class="vh-100 position-relative vw-img" src="assets/images/background.png">
+
+      <div class="row text-not-account d-none d-lg-inline-flex">
+        <p class="greenish-blue-text mr-3 mt-2">
+          ¿No tienes una cuenta en Wobiz?
+        </p>
+        <a href="https://admin.wobiz.com.ar/signup">
+          <button class="btn btn-transparent btn-bordered">
+            <div class="button-text">
+              Crea tu cuenta
+            </div>
+          </button>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,60 @@
+h2 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.logo {
+  width: 130px;
+}
+
+.greenish-blue-text {
+  color: #163a49;
+}
+
+.box{
+  padding: 30px 50px!important;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 6px
+}
+
+.box-shadow {
+  box-shadow: 0 0 6px 0 rgba(0,0,0,.15);
+}
+
+.forgot-pass {
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color:#163a49;
+  }
+}
+
+.btn-validate {
+  height: 45px;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.vw-img {
+  width: 100%;
+  object-fit: cover;
+  object-position: right;
+}
+
+.btn-transparent {
+  text-transform: none;
+  font-weight: 700;
+}
+
+.text-not-account {
+  top: 42px;
+  position: absolute;
+  right: 10%;
+}
+
+.form-control {
+  height: calc(1.5em + .75rem + 16px)!important;
+}

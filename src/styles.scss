@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body, html, input {
+  font-family: Roboto,sans-serif;
+  font-size: 13px;
+  color: #363636;
+}
+
+.darkgray-text {
+  color: #363636;
+}
+
+.gray-text {
+  color: #969696;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+input[type=email], input[type=number], input[type=password], input[type=text] {
+  font-size: 16px;
+}
+
+.btn-action-2, .btn-action-2.disabled, .btn-action-2:disabled {
+  background-color: #1bb8e3;
+  color: #fff;
+
+  &:active, &:active::after {
+    background-color: #1E6E88 !important;
+  }
+}
+
+.btn {
+  border-radius: 3px;
+  outline: none;
+  font-size: 13px;
+  min-height: 35px;
+  box-sizing: border-box;
+  border: none;
+  display: inline-block;
+  padding: 0 16px;
+
+  &:hover {
+    background-color: #1E6E88;
+  }
+  &:active, &:active::after {
+    background-color: #1E6E88 !important;
+  }
+}
+
+.btn-bordered {
+  border: 1px solid #163a49;
+
+  &:hover{
+    color: white;
+    background-color: #163a49;
+  }
+}
