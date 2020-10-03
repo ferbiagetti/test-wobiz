@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  wobiz-frontend:
+    image: wobiz-frontend
+    build: .
+    restart: unless-stopped
+    ports:
+       - 4200:4200
+       - 80:80
+    # Uncomment this only in dev mode
+    #volumes:
+    #  - ./src:/zaida/src
+    #command: [ng, "serve", "--host", "0.0.0.0"]
