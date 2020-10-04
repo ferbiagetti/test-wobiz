@@ -3,7 +3,6 @@ import {AuthService} from '../../service/auth.service';
 import { finalize } from 'rxjs/operators';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-login',
