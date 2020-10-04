@@ -4,7 +4,8 @@ export interface User {
 }
 
 export interface UserResponse {
+  'codigo': number;
   'token': string;
   'expires': number;
-  'user_id': number;
+  'user_id': string;
 }

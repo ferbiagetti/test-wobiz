@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import { finalize } from 'rxjs/operators';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private modal: NgbModal) { }
   isSubmitted = false;
   showWrongData = false;
   wrongDataMsj;
@@ -31,6 +34,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.wrongDataMsj = '';
+    this.showWrongData = false;
     this.isSubmitted = true;
     if (this.loginForm.valid) {
 
@@ -39,26 +44,24 @@ export class LoginComponent implements OnInit {
         this.showSpinner = false
       ))
       .subscribe( response => {
-        this.loginUser(response);
-      }),
+        if (response.codigo === 200) {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('user_id', response.user_id);
+          window.location.href = 'https://www.wobiz.com/';
+        }
+      },
       err => {
-        console.log('error', err)
-        /* MODAL WITH ERRORS HERE */
-      }
-    }
-  }
+        if (err.error.code === 106) {
+          this.wrongDataMsj = 'La contraseña no coinciden con el usuario';
+          this.showWrongData = true;
+        }
 
-  loginUser(response: any): void {
-    if (response.codigo === 200) {
-      localStorage.setItem('token', response.token);
-      localStorage.setItem('user_id', response.user_id);
+        if (err.error.code === 108) {
+          this.wrongDataMsj = 'Usuario Incorrecto';
+          this.showWrongData = true;
+        }
+      });
     }
-    if (!response.success){
-      this.wrongDataMsj = response.message;
-      this.showWrongData = true;
-    }
-
-    /** ANOTHERS ERRORS HERE */
   }
 
   get email(): AbstractControl { return this.loginForm.get('email'); }

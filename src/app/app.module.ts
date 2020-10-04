@@ -9,13 +9,15 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertsComponent } from './components/shared/alerts/alerts.component';
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
+import { ModalComponent } from './components/shared/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AlertsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
