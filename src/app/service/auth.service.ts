@@ -15,7 +15,11 @@ export class AuthService {
   private readonly ENDPOINT_LOGIN = 'login';
 
   public login(user: User): Observable<UserResponse>{
-    const url = `${this.baseUrl}/${this.ENDPOINT_LOGIN}?username=${user.email}&password=${user.password}`;
-    return this.http.get<UserResponse>(url);
+    const url = `${this.baseUrl}/${this.ENDPOINT_LOGIN}`;
+    const body = {
+      username: user.email,
+      password: user.password
+    };
+    return this.http.post<UserResponse>(url, body);
   }
 }
