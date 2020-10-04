@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import { finalize } from 'rxjs/operators';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +10,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService,
-              private modal: NgbModal) { }
+  constructor(private authService: AuthService) { }
+  
   isSubmitted = false;
   showWrongData = false;
   wrongDataMsj;
