@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrlBase: 'admin.localwobiz.com'
+  apiUrlBase: 'https://powerful-crag-90877.herokuapp.com'
 };
 
 /*

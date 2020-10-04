@@ -38,23 +38,27 @@ export class LoginComponent implements OnInit {
       .pipe(finalize(() =>
         this.showSpinner = false
       ))
-      .subscribe( token => {
-        this.loginUser(token);
+      .subscribe( response => {
+        this.loginUser(response);
       }),
       err => {
         console.log('error', err)
+        /* MODAL WITH ERRORS HERE */
       }
     }
   }
 
-  loginUser(token: any): void {
-    if (token.status === 200){
-      localStorage.setItem('token', token.token);
-      localStorage.setItem('user_id', token.user_id);
-    } else {
-      this.wrongDataMsj = token.message;
+  loginUser(response: any): void {
+    if (response.codigo === 200) {
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('user_id', response.user_id);
+    }
+    if (!response.success){
+      this.wrongDataMsj = response.message;
       this.showWrongData = true;
     }
+
+    /** ANOTHERS ERRORS HERE */
   }
 
   get email(): AbstractControl { return this.loginForm.get('email'); }
