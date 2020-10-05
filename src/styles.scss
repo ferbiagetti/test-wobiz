@@ -47,8 +47,8 @@ input[type=email], input[type=number], input[type=password], input[type=text] {
   &:hover {
     background-color: #1E6E88;
   }
-  &:active, &:active::after {
-    background-color: #1E6E88 !important;
+  &:focus {
+    background-color: #1bb8e3;
   }
 }
 
