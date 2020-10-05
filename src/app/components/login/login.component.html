@@ -51,7 +51,7 @@
 
             <div class="row">
               <div class="col">
-                <button class="btn btn-action-2 btn-lg btn-block mt-3 btn-validate btn-secondary">
+                <button [disabled]="showSpinner" class="btn btn-action-2 btn-lg btn-block mt-3 btn-validate btn-secondary">
                   <div *ngIf="!showSpinner">Ingresar a mi cuenta</div>
                   <app-spinner *ngIf="showSpinner"></app-spinner>
                 </button>
