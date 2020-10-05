@@ -11,7 +11,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
-  
+
   isSubmitted = false;
   showWrongData = false;
   wrongDataMsj;
@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     email: new FormControl('', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
     ]),
     password: new FormControl('', [
       Validators.required,
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.showWrongData = false;
     this.isSubmitted = true;
     if (this.loginForm.valid) {
-
+      this.showSpinner = true;
       this.authService.login(this.loginForm.value)
       .pipe(finalize(() =>
         this.showSpinner = false
